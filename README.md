@@ -356,10 +356,10 @@ names(bridge)
     ## [123] "DECK_AREA"
 
 ``` r
-(bridge.subset <- bridge[,c(2,9,10,22,27,121)])
+(bridge.subset <- bridge[,c(2,9,10,22,27, 30,121)])
 ```
 
-    ## # A tibble: 13,471 x 6
+    ## # A tibble: 13,471 x 7
     ##    STRUCTURE_NUMBE~ COUNTY_CODE_003 PLACE_CODE_004 DETOUR_KILOS_019
     ##    <chr>            <chr>           <chr>                     <dbl>
     ##  1 000000000006389  023             00000                        18
@@ -372,5 +372,33 @@ names(bridge)
     ##  8 00000000000F125  007             53458                        40
     ##  9 00000000000F126  007             00000                         8
     ## 10 00000000000F127  029             53458                        40
-    ## # ... with 13,461 more rows, and 2 more variables: YEAR_BUILT_027 <dbl>,
-    ## #   BRIDGE_CONDITION <chr>
+    ## # ... with 13,461 more rows, and 3 more variables: YEAR_BUILT_027 <dbl>,
+    ## #   ADT_029 <dbl>, BRIDGE_CONDITION <chr>
+
+``` r
+names(bridge.subset)
+```
+
+    ## [1] "STRUCTURE_NUMBER_008" "COUNTY_CODE_003"      "PLACE_CODE_004"      
+    ## [4] "DETOUR_KILOS_019"     "YEAR_BUILT_027"       "ADT_029"             
+    ## [7] "BRIDGE_CONDITION"
+
+``` r
+# plot year built vs avg daily traffic
+plot(bridge.subset$YEAR_BUILT_027, bridge.subset$ADT_029)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+``` r
+# histogram of year built
+hist(bridge.subset$YEAR_BUILT_027)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->
+
+The plot of the year built versus the average daily traffic appears to
+show a positive correlation between the variables. The later the bridge
+was built, the more traffic it gets. The histogram of the year built
+shows the number of bridges built per year, and indicates that bridges
+built per year increased until around 2000, then starts to decrease.

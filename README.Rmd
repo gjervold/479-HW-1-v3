@@ -21,5 +21,14 @@ str(bridge)
 # some variables of interest isolated
 # structure number, county code, place code, detour length, year built, avg daily traffic, condition ratings
 names(bridge)
-(bridge.subset <- bridge[,c(2,9,10,22,27,121)])
+(bridge.subset <- bridge[,c(2,9,10,22,27, 30,121)])
+names(bridge.subset)
+
+# plot year built vs avg daily traffic
+plot(bridge.subset$YEAR_BUILT_027, bridge.subset$ADT_029)
+# histogram of year built
+hist(bridge.subset$YEAR_BUILT_027)
 ```
+
+The plot of the year built versus the average daily traffic appears to show a positive correlation between the variables. The later the bridge was built, the more traffic it gets.
+The histogram of the year built shows the number of bridges built per year, and indicates that bridges built per year increased until around 2000, then starts to decrease.
